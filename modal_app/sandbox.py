@@ -26,6 +26,8 @@ REPO_IMAGE = (
         "uvicorn",
     )
     .run_commands(
+        # v2: force cache bust after initial push of harness code
+        "true",
         (
             "bash -lc 'git clone "
             '"https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO_URL}.git" /app\''
