@@ -3,13 +3,13 @@
   --panel: #1a1d24;
   --display: #11141a;
   --text: #f5f7fa;
-  --muted: #8b94a7;
-  --num: #2a2f3a;
-  --num-hover: #353b48;
-  --fn: #4a5160;
-  --fn-hover: #5a6273;
-  --op: #ff9f0a;
-  --op-hover: #ffb13d;
+  --muted: #b8a8d9;
+  --num: #6b46c1;
+  --num-hover: #7c5ad1;
+  --fn: #4c2a99;
+  --fn-hover: #5d36b3;
+  --op: #a855f7;
+  --op-hover: #b975f9;
 }
 
 * { box-sizing: border-box; }
@@ -69,7 +69,7 @@ html, body {
   border-radius: 999px;
   height: 64px;
   font-size: 1.4rem;
-  color: var(--text);
+  color: #fff;
   cursor: pointer;
   transition: background 0.12s ease, transform 0.06s ease;
   font-family: inherit;
