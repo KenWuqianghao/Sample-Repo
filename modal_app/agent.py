@@ -98,7 +98,7 @@ async def run_agent(
     history: list[Any],
     media_urls: list[str] | None = None,
 ) -> None:
-    sandbox = modal.Sandbox.from_id(sandbox_id)
+    sandbox = await modal.Sandbox.from_id.aio(sandbox_id)
     linq = LinqClient(os.environ["LINQ_TOKEN"], os.environ["LINQ_FROM_NUMBER"])
     hist = [cast_history_item(h) for h in history if isinstance(h, dict)]
 
@@ -112,7 +112,8 @@ async def run_agent(
     outbound_last: str | None = None
 
     try:
-        await linq.send_typing(sender, True)
+        with suppress(LinqAPIError):
+            await linq.send_typing(sender, True)
         with suppress(LinqAPIError):
             await linq.send_reaction(msg_id, "👀")
 

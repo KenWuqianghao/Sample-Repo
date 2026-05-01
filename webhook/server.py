@@ -71,7 +71,7 @@ def create_app(
         # linq-prompts as soon as the web worker is live.
         try:
             from modal_app.session import session_manager as _sm
-            _sm.spawn()
+            await _sm.spawn.aio()
             log.info("session_manager_spawned")
         except Exception as _exc:
             log.warning("session_manager_spawn_failed", error=str(_exc))
