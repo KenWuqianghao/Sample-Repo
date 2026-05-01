@@ -45,9 +45,12 @@ def session_manager() -> None:
     from modal_app.agent import run_agent
 
     while True:
-        job_obj = QUEUE.get(block=True, timeout=30.0)
-        if job_obj is None:
+        try:
+            job_obj = QUEUE.get(block=True, timeout=30.0)
+        except Exception:
             log.debug("queue_idle_timeout")
+            continue
+        if job_obj is None:
             continue
         job = cast(dict[str, Any], job_obj)
         sender = cast(str, job["sender"])
