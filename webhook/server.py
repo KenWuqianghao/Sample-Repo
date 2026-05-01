@@ -50,7 +50,6 @@ def create_app(
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
-        # Queue is created lazily on first webhook (keeps /health independent of Modal Queue).
         http = AsyncClient(timeout=10.0)
         app.state.http = http
 
@@ -67,6 +66,16 @@ def create_app(
             app.state.linq = linq_client_factory(http)
         else:
             app.state.linq = default_factory(http)
+
+        # Spawn the queue-consuming session_manager so it starts draining
+        # linq-prompts as soon as the web worker is live.
+        try:
+            from modal_app.session import session_manager as _sm
+            _sm.spawn()
+            log.info("session_manager_spawned")
+        except Exception as _exc:
+            log.warning("session_manager_spawn_failed", error=str(_exc))
+
         try:
             yield
         finally:
