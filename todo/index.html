@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app__header">
+        <h1>Todo</h1>
+        <p id="summary" class="app__summary">No tasks yet</p>
+      </header>
+
+      <form id="new-todo-form" class="new-todo">
+        <input
+          id="new-todo-input"
+          class="new-todo__input"
+          type="text"
+          placeholder="What needs to be done?"
+          autocomplete="off"
+          required
+        />
+        <button type="submit" class="new-todo__add">Add</button>
+      </form>
+
+      <nav class="filters" aria-label="Filter todos">
+        <button class="filters__btn is-active" data-filter="all">All</button>
+        <button class="filters__btn" data-filter="active">Active</button>
+        <button class="filters__btn" data-filter="completed">Completed</button>
+      </nav>
+
+      <ul id="todo-list" class="todo-list" aria-live="polite"></ul>
+
+      <footer class="app__footer">
+        <button id="clear-completed" class="footer__clear" type="button">
+          Clear completed
+        </button>
+      </footer>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
