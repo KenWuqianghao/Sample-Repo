@@ -1,0 +1,1 @@
+"""Linq Partner API client."""

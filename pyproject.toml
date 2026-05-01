@@ -1,0 +1,49 @@
+[project]
+name = "imessage-coding-agent"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "modal>=0.73",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.29",
+    "httpx>=0.27",
+    "pydantic>=2.7",
+    "python-dotenv>=1.0",
+    "structlog>=24.0",
+    "anthropic>=0.40",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "respx>=0.21",
+    "ruff>=0.4",
+    "mypy>=1.10",
+]
+
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["modal_app*", "webhook*", "linq*", "harness*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+src = ["modal_app", "webhook", "linq", "harness", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true

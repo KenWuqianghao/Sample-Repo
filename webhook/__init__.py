@@ -1,0 +1,1 @@
+"""FastAPI Linq webhook receiver."""
