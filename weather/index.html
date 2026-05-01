@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <h1>Weather</h1>
+      <p class="subtitle">Powered by Open-Meteo · no API key required</p>
+    </header>
+
+    <form id="search-form" class="search">
+      <input
+        id="search-input"
+        type="text"
+        placeholder="Search a city (e.g. Tokyo)"
+        autocomplete="off"
+        required
+      />
+      <button type="submit">Search</button>
+      <button type="button" id="geo-btn" title="Use my location">📍</button>
+    </form>
+
+    <section id="status" class="status" aria-live="polite"></section>
+
+    <section id="current" class="current hidden">
+      <div class="current-main">
+        <div class="location">
+          <h2 id="place"></h2>
+          <p id="now-time"></p>
+        </div>
+        <div class="temp">
+          <span id="temp"></span><span class="unit">°C</span>
+        </div>
+      </div>
+      <div class="current-meta">
+        <div><span class="label">Condition</span><span id="condition"></span></div>
+        <div><span class="label">Feels like</span><span id="feels"></span>°C</div>
+        <div><span class="label">Humidity</span><span id="humidity"></span>%</div>
+        <div><span class="label">Wind</span><span id="wind"></span> km/h</div>
+      </div>
+    </section>
+
+    <section id="forecast" class="forecast hidden">
+      <h3>7-day forecast</h3>
+      <ul id="forecast-list"></ul>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

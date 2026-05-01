@@ -1,0 +1,138 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: linear-gradient(160deg, #4a90e2 0%, #6dd5ed 100%);
+  min-height: 100vh;
+  color: #1a2233;
+}
+
+.app {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.subtitle {
+  margin: 4px 0 20px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+}
+
+.search {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.search input {
+  flex: 1;
+  padding: 12px 14px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.search button {
+  padding: 0 16px;
+  border: none;
+  border-radius: 10px;
+  background: #1a2233;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.search button:hover { background: #2c3a55; }
+
+.status {
+  color: #fff;
+  min-height: 1.2em;
+  margin: 8px 0;
+  font-size: 0.95rem;
+}
+
+.hidden { display: none !important; }
+
+.current,
+.forecast {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.current-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.location h2 { margin: 0; font-size: 1.4rem; }
+.location p { margin: 4px 0 0; color: #6b7280; font-size: 0.9rem; }
+
+.temp {
+  font-size: 3.5rem;
+  font-weight: 600;
+  line-height: 1;
+}
+.temp .unit { font-size: 1.4rem; vertical-align: top; color: #6b7280; }
+
+.current-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.current-meta div {
+  background: #f1f5fb;
+  padding: 10px 12px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+}
+
+.current-meta .label {
+  color: #6b7280;
+  margin-right: 8px;
+}
+
+.forecast h3 { margin: 0 0 12px; }
+
+#forecast-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#forecast-list li {
+  display: grid;
+  grid-template-columns: 1.2fr 2fr 1fr;
+  align-items: center;
+  padding: 10px 4px;
+  border-bottom: 1px solid #eef0f4;
+  gap: 8px;
+}
+
+#forecast-list li:last-child { border-bottom: none; }
+
+.day { font-weight: 500; }
+.cond { color: #4b5563; font-size: 0.95rem; }
+.range { text-align: right; font-variant-numeric: tabular-nums; }
+.range .lo { color: #6b7280; margin-left: 8px; }
+
+@media (min-width: 540px) {
+  .current-meta { grid-template-columns: repeat(4, 1fr); }
+}
